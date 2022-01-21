@@ -1,6 +1,6 @@
 # todolistapp
 
-A new Flutter project.
+This project contains the source for a Todo List CRUD app
 
 ## Getting Started
 

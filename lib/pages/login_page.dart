@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todolistapp/pages/todo_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -26,10 +27,18 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter your username',
-                  ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 2.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(120, 140, 222, 1),
+                            width: 2.0),
+                      ),
+                      hintText: 'Enter your username',
+                      hintStyle: TextStyle(color: Colors.white)),
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter the username';
@@ -45,9 +54,16 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter your password',
-                  ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 2.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(120, 140, 222, 1),
+                            width: 2.0),
+                      ),
+                      hintText: 'Enter your password',
+                      hintStyle: TextStyle(color: Colors.white)),
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter the password';
@@ -61,7 +77,10 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      print("GREAT SUCCESS");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TodoPage()));
                     }
                   },
                   child: const Text("Sign In"))

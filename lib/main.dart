@@ -14,10 +14,19 @@ class TodoListApp extends StatelessWidget {
     return MaterialApp(
       title: 'Todo List App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          textTheme: const TextTheme(
+            bodyText1: TextStyle(
+              color: Colors.white,
+            ),
+            bodyText2: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          appBarTheme:
+              const AppBarTheme(color: Color.fromRGBO(120, 140, 222, 1)),
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: const Color(0xFF1e1e1e)),
       home: const LoginPage(),
     );
   }
 }
-

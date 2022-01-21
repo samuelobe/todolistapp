@@ -9,6 +9,8 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
+  final TextEditingController _textController = TextEditingController();
+  List<String> todoItems = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,8 +19,13 @@ class _TodoPageState extends State<TodoPage> {
       ),
       body: Stack(
         children: [
-          ListView(
-            children: const [TodoItem(), TodoItem()],
+          ListView.builder(
+            itemCount: todoItems.length,
+            itemBuilder: (BuildContext context, int index) {
+              return TodoItem(
+                text: todoItems[index],
+              );
+            },
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -30,11 +37,19 @@ class _TodoPageState extends State<TodoPage> {
                       leading: IconButton(
                         color: Colors.white,
                         icon: const Icon(Icons.add),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            todoItems.add(_textController.text);
+                            _textController.clear();
+                          });
+                        },
                       ),
-                      title: const TextField(
+                      title: TextField(
+                        style: const TextStyle(color: Colors.white),
+                        controller: _textController,
+                        onChanged: (value) {},
                         autofocus: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             hintStyle: TextStyle(color: Colors.white),
                             hintText: "Add a task",
                             border: InputBorder.none),

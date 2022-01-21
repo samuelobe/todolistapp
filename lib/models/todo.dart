@@ -9,7 +9,6 @@ class Todo extends Equatable {
     required this.taskName
   });
 
-  @override
-  // TODO: implement props
+  @override   
   List<Object?> get props => [isSelected, taskName];
 }

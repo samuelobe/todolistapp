@@ -5,7 +5,7 @@ class Todo extends Equatable {
   final String taskName;
 
   const Todo({
-    required this.isSelected,
+    this.isSelected = false,
     required this.taskName
   });
 
